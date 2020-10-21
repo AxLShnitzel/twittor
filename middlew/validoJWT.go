@@ -1,7 +1,12 @@
 package middlew
 
-import "net/http"
+import (
+	"net/http"
 
+	"github.com/AxLShnitzel/twittor/routers"
+)
+
+// ValidoJWT permite validar el JWT que nos viene en
 func ValidoJWT(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		_, _, _, err := routers.ProcesoToken(r.Header.Get("Authorization"))
